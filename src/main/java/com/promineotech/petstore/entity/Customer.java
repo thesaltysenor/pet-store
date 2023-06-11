@@ -1,9 +1,11 @@
-package pet.store.entity;
+package com.promineotech.petstore.entity;
 
 import jakarta.persistence.*;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 
 import java.util.HashSet;
 
@@ -11,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Data
-@NoArgsConstructor
+
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +23,10 @@ public class Customer {
     private String customerLastName;
     private String customerEmail;
 
-    @ManyToMany(mappedBy = "customers")
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "customers", cascade = CascadeType.PERSIST)
     private Set<PetStore> petStores = new HashSet<>();
 
   }

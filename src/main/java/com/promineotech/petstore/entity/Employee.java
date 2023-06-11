@@ -1,14 +1,16 @@
-package pet.store.entity;
+package com.promineotech.petstore.entity;
 
 
 import jakarta.persistence.*;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 
 @Entity
 @Data
-@NoArgsConstructor
+
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +21,9 @@ public class Employee {
     private String employeePhone;
     private String employeeTitle;
 
-    @ManyToOne
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pet_store_id")
     private PetStore petStore;
 
