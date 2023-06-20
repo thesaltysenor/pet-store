@@ -69,7 +69,7 @@ public class PetStoreData {
         private String customerFirstName;
         private String customerLastName;
         private String customerEmail;
-        private Set<PetStore> petStores = new HashSet<>();
+
 
         // Constructor that initializes the PetStoreCustomer object based on a Customer entity
         public PetStoreCustomer(Customer customer) {
